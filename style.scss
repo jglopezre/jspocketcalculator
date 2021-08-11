@@ -1,0 +1,168 @@
+$color-f1: palevioletred;
+$color-f2: cadetblue;
+$color-f3: mediumseagreen;
+$color-f4: tomato;
+$color-f5: steelblue;
+
+@font-face {
+    font-family: "frozencrystal";
+    src: url(frozencrystal.ttf) format("truetype");
+}
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-size: 16px;
+}
+
+body {
+    background-color: peachpuff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 30ch;
+    height: 40vh;
+    padding: 1em;
+    background: dimgrey;
+    //border-radius: 5px;
+    box-shadow: 0 5px 3px 5px rgb(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 30% repeat(5, 1fr);
+    //column-gap: 2px;
+    //row-gap: 5px;
+
+    grid-template-areas:
+	"display display display display"
+	"button17 button18 button19 button20"
+	"button1 button2 button3 button4"
+	"button5 button6 button7 button8"
+	"button9 button10 button11 button12"
+	"button13 button14 button15 button16";
+    
+
+    .display {
+	grid-area: display;
+	border: inset 1px dimgray;
+	background-color: dimgrey;
+	//border-radius: 5px;
+	width: 100%;
+	font-family: "frozencrystal";
+	font-size: 4rem;
+	text-align: right;
+	color: lavender;
+    }
+    
+
+    .button {
+	border: none;
+	background-color: $color-f2;
+	color: white;
+	//border-radius: 5px;
+
+	&:hover {
+	    box-shadow: 0 0 3px 20px rgba(255, 255, 255, 0.2) inset;
+	}
+
+	&:active {
+	    box-shadow: 0 0 3px 20px rgba(0, 0, 0, 0.5) inset;
+	}
+    }
+
+
+    .button:nth-child(2) {
+	grid-area: button1;
+    }
+
+    .button:nth-child(3) {
+	grid-area: button2;
+    }
+
+    .button:nth-child(4) {
+	grid-area: button3;
+    }
+
+    .button:nth-child(5) {
+	grid-area: button4;
+	background-color: $color-f5;
+    }
+
+    .button:nth-child(6) {
+	grid-area: button5;
+    }
+
+    .button:nth-child(7) {
+	grid-area: button6;
+    }
+
+    .button:nth-child(8) {
+	grid-area: button7;
+    }
+
+    .button:nth-child(9) {
+	grid-area: button8;
+	background-color: $color-f5;	
+    }
+
+    .button:nth-child(10) {
+	grid-area: button9;
+    }
+
+    .button:nth-child(11) {
+	grid-area: button10;
+    }
+
+    .button:nth-child(12) {
+	grid-area: button11;
+    }
+
+    .button:nth-child(13) {
+	grid-area: button12;
+	background-color: $color-f5;
+    }
+
+    .button:nth-child(14) {
+	grid-area: button13;
+    }
+
+    .button:nth-child(15) {
+	grid-area: button14;
+    }
+
+    .button:nth-child(16) {
+	grid-area: button15;
+	background-color: $color-f3;
+    }
+
+    .button:nth-child(17) {
+	grid-area: button16;
+	background-color: $color-f5;
+    }
+
+    .button:nth-child(18) {
+	grid-area: button17;
+	background-color: $color-f1;
+    }
+
+    .button:nth-child(19) {
+	grid-area: button18;
+	background-color: $color-f1;
+    }
+
+    .button:nth-child(20) {
+	grid-area: button19;
+	background-color: $color-f1;
+    }
+
+    .button:nth-child(21) {
+	grid-area: button20;
+	background-color: $color-f4;
+    }
+}
