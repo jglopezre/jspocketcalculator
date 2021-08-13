@@ -1,8 +1,22 @@
+/***********************************************************************************
+ *Author: Javier Lopez
+ *Date: 10-ago-2021
+ *Version: 0.01
+ *Description: This program simulate a basic pocket calulator:
+ *             Only have a buffer register that holds last number introduced
+ *             When press a key, it concatenates its value to last value introduced
+ *             Show result at press an operation key and finish process when equal
+ *             key is pressed. Holding last value.
+ *             One time press C key erases display value, a second time pressing 
+ *             C key will erase buffer data too.
+ *             Thank!
+ ***********************************************************************************/
+
 let display = document.querySelector(".display");
 let button = document.querySelectorAll(".button");
 let result = 0;
 let mainBuffer = {
-    data: "0",
+    data: "",
     buffer: 0,
     operation: "",
     lastOperation: "",
@@ -11,6 +25,7 @@ let mainBuffer = {
     allClear: false
 };
 
+/************************************************************************/
 function operation(bufferObj) {
 
     if(bufferObj.operating) {
@@ -20,37 +35,47 @@ function operation(bufferObj) {
 	    break;
 
 	case "sub":
-	    if(!bufferObj.operating) {
-		bufferObj.buffer = Number(bufferObj.data);
-	    }else{
-		bufferObj.buffer = bufferObj.buffer - Number(bufferObj.data);
-	    }
+	    bufferObj.buffer = bufferObj.buffer - Number(bufferObj.data);
 	    break;
 	    
 	case "mul":
 	    bufferObj.buffer = bufferObj.buffer * Number(bufferObj.data);
 	    break;
 
+	case "div":
+	    bufferObj.buffer = bufferObj.buffer / Number(bufferObj.data);
+	    break;
+
+	case "":
+	    break;
+	    
 	default:
 	    console.error("INVALID OPERATION")
 	}
     }else{
 	bufferObj.buffer = Number(bufferObj.data);
-//	bufferObj.operation = "";
 	bufferObj.operating = true;
     }
+
+    //Comprueba si se presiono = pra borrar el buffer y prevenir otro calculo
+    if (bufferObj.equal) {
+	bufferObj.operation = "";
+	
+    }
+        
     bufferObj.lastOperation = bufferObj.operation;
     bufferObj.operation = "";
     bufferObj.equal = true;
     bufferObj.data = bufferObj.buffer.toString();
+
+    if (bufferObj.operating && bufferObj.lastOperation == "div" && bufferObj.buffer == 0) {
+	bufferObj.data = "ERROR";
+    }
+    
     return bufferObj;
 }
 
-
-function printDisplay (number) {
-    display.innerText = number.toString();
-}
-
+/************************************************************************/
 function keyFunction(keyValue, bufferObj) {
     let bufferA = "";
 
@@ -61,75 +86,94 @@ function keyFunction(keyValue, bufferObj) {
     
     switch (keyValue) {
     case 1:
+	bufferObj.allClear = false;
 	bufferA = "7";
 	break;
     
     case 2:
+	bufferObj.allClear = false;
 	bufferA = "8";
 	break;
 
     case 3:
+	bufferObj.allClear = false;
 	bufferA = "9";
 	break;
 
     case 4:
 	//Suma
+	bufferObj.allClear = false;
 	bufferObj.operation = "add";
 	operation(bufferObj);
 	break;
 
     case 5:
+	bufferObj.allClear = false;
 	bufferA = "4";
 	break;
 
     case 6:
+	bufferObj.allClear = false;
 	bufferA = "5";
 	break;
 
     case 7:
+	bufferObj.allClear = false;
 	bufferA = "6";
 	break;
 
     case 8:
 	//Resta
+	bufferObj.allClear = false;
 	bufferObj.operation = "sub";
 	operation(bufferObj);
 	break;
 
     case 9:
+	bufferObj.allClear = false;
 	bufferA = "1";
 	break;
 
     case 10:
+	bufferObj.allClear = false;
 	bufferA = "2";
 	break;
 
     case 11:
+	bufferObj.allClear = false;
 	bufferA = "3";
 	break;
 
     case 12:
 	//Multiplica
+	bufferObj.allClear = false;
 	bufferObj.operation = "mul";
 	operation(bufferObj);
 	break;
 
     case 13:
+	bufferObj.allClear = false;
 	bufferA = "0";
 	break;
 
     case 14:
 	//punto
+	bufferObj.allClear = false;
+	bufferA = ".";
 	break;
 
     case 15:
 	//igual
+	bufferObj.allClear = false;
+	bufferObj.equal = true;
+	operation(bufferObj);
 	break;
 
     case 16:
 	//Division
-//	bufferObj.operation = "div";
-//	operation(bufferObj);
+	bufferObj.allClear = false;
+	bufferObj.operation = "div";
+	operation(bufferObj);
 	break;
 
     case 17:
@@ -147,11 +191,12 @@ function keyFunction(keyValue, bufferObj) {
     case 20:
 	//Limpia Display
 	if (!bufferObj.allClear) {
-	    bufferObj.data = "0";
+	    bufferObj.data = "";
 	    bufferObj.allClear = true;
 	}else{
 	    bufferObj.buffer = 0;
 	    bufferObj.operating = false;
+	    bufferObj.lastOperation = "";
 	    bufferObj.operation = "";
 	    bufferObj.allClear = false;
 	}
@@ -166,9 +211,8 @@ function keyFunction(keyValue, bufferObj) {
       bufferObj.data = bufferObj.data + bufferA;
     }
 
-    console.log(bufferObj);
-    
-    printDisplay(Number(bufferObj.data));
+    display.innerText = bufferObj.data;
+
     return bufferObj;
 }
 
