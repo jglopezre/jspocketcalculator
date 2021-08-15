@@ -12,11 +12,14 @@
  *             Thank!
  ***********************************************************************************/
 
+const MAX_DISPLAY_VALUE = 99999999;
+const MIN_DISPLAY_VALUE = 0.000001;
 let display = document.querySelector(".display");
 let button = document.querySelectorAll(".button");
 let result = 0;
 let mainBuffer = {
     data: "",
+    memory: "",
     buffer: 0,
     operation: "",
     lastOperation: "",
@@ -25,6 +28,35 @@ let mainBuffer = {
     allClear: false
 };
 
+
+//If display excced 8 characters, this converts buffer.data in a exponent result.
+function exponentialization(bufferObj) {
+    if (bufferObj.buffer > MAX_DISPLAY_VALUE){
+	bufferObj.data = bufferObj.buffer.toExponential(4);
+	bufferObj.equal = false;
+    }else{
+	bufferObj.data = bufferObj.buffer.toString();
+	bufferObj.equal = true;
+    }
+    return bufferObj
+}
+/***********************************************************************/
+function clearData(bufferObj) {
+
+    if (!bufferObj.allClear) {
+	console.log("aqui");
+	bufferObj.data = "";
+	bufferObj.allClear = true;
+    }else{
+	bufferObj.buffer = 0;
+	bufferObj.data = "";
+	bufferObj.operating = false;
+	bufferObj.lastOperation = "";
+	bufferObj.operation = "";
+	bufferObj.allClear = false;
+    }
+    return bufferObj;
+}
 /************************************************************************/
 function operation(bufferObj) {
 
@@ -59,17 +91,19 @@ function operation(bufferObj) {
 
     //Comprueba si se presiono = pra borrar el buffer y prevenir otro calculo
     if (bufferObj.equal) {
-	bufferObj.operation = "";
+	bufferObj.lastOperation = "";
 	
     }
-        
+    
     bufferObj.lastOperation = bufferObj.operation;
     bufferObj.operation = "";
-    bufferObj.equal = true;
-    bufferObj.data = bufferObj.buffer.toString();
 
+    bufferObj = exponentialization(bufferObj);
+    
     if (bufferObj.operating && bufferObj.lastOperation == "div" && bufferObj.buffer == 0) {
+	clearData(bufferObj);
 	bufferObj.data = "ERROR";
+	
     }
     
     return bufferObj;
@@ -164,7 +198,7 @@ function keyFunction(keyValue, bufferObj) {
 
     case 15:
 	//igual
-	bufferObj.allClear = false;
+	bufferObj.allClear = true;
 	bufferObj.equal = true;
 	operation(bufferObj);
 	break;
@@ -178,40 +212,38 @@ function keyFunction(keyValue, bufferObj) {
 
     case 17:
 	//Memoriza
+	bufferObj.allClear = false;
+	bufferObj.memory = bufferObj.data;
 	break;
 
     case 18:
 	//Muestra Memoria en Display
+	bufferObj.allClear = false;
+	bufferObj.data = bufferObj.memory;
 	break;
 
     case 19:
 	//Limpia Memoria
+	bufferObj.allClear = false;
+	bufferObj.memory = "";
 	break;
 
     case 20:
 	//Limpia Display
-	if (!bufferObj.allClear) {
-	    bufferObj.data = "";
-	    bufferObj.allClear = true;
-	}else{
-	    bufferObj.buffer = 0;
-	    bufferObj.operating = false;
-	    bufferObj.lastOperation = "";
-	    bufferObj.operation = "";
-	    bufferObj.allClear = false;
-	}
+	clearData(bufferObj);
 	break;
 
     default:
 	console.error("Valor Fuera de Rango");
     }
     
-
     if (bufferObj.data.length <= 7) {
       bufferObj.data = bufferObj.data + bufferA;
     }
 
     display.innerText = bufferObj.data;
+
+    console.log(bufferObj);
 
     return bufferObj;
 }
