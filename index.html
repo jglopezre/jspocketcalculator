@@ -4,31 +4,65 @@
     <meta charset="UTF-8"/>
     <title>Calculadora</title>
     <link href="style.css" rel="stylesheet"/>
+    <!-- Favicon ----------------------------------------------------------------------->
+    <link rel="apple-touch-icon" sizes="57x57" href="icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
+    <link rel="manifest" href="icon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="icon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!---------------------------------------------------------------------------------->
   </head>
   <body>
     <div class="container">
-      <div class="display"></div>
-      <button class="button">7</button>
-      <button class="button">8</button>
-      <button class="button">9</button>
-      <button class="button">+</button>
-      <button class="button">4</button>
-      <button class="button">5</button>
-      <button class="button">6</button>
-      <button class="button">-</button>
-      <button class="button">1</button>
-      <button class="button">2</button>
-      <button class="button">3</button>
-      <button class="button">*</button>
-      <button class="button">0</button>
-      <button class="button">.</button>
-      <button class="button">=</button>
-      <button class="button">/</button>
-      <button class="button">M</button>
-      <button class="button">MR</button>
-      <button class="button">MC</button>
-      <button class="button">C</button>
+      <div class="sub-container-left">
+	<div><h1 class="title">Pocket Calculator</h1></div>
+	<div><p><span>JSPocketCalculator</span> is an own excercise
+	    <br/>
+	    for practicing better styles and
+	    <br/>
+	    improving JavaScript skills.</p></div>
+	<div><img alt="logo-javier" src="logo.svg" width="128px"></div>
+      </div>
+      <!--Calculator---------------------------->
+      <div class="sub-container-right">
+	<div class="calculator">
+	  <div class="display"></div>
+	  <button class="button">7</button>
+	  <button class="button">8</button>
+	  <button class="button">9</button>
+	  <button class="button">+</button>
+	  <button class="button">4</button>
+	  <button class="button">5</button>
+	  <button class="button">6</button>
+	  <button class="button">-</button>
+	  <button class="button">1</button>
+	  <button class="button">2</button>
+	  <button class="button">3</button>
+	  <button class="button">*</button>
+	  <button class="button">0</button>
+	  <button class="button">.</button>
+	  <button class="button">=</button>
+	  <button class="button">/</button>
+	  <button class="button">M</button>
+	  <button class="button">MR</button>
+	  <button class="button">MC</button>
+	  <button class="button">C</button>
+	</div>
+      </div>
     </div>
+    <!---------------------------------------->
     <script src="script.js"></script>
   </body>
 </html>

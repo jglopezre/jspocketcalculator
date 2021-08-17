@@ -1,0 +1,174 @@
+@font-face {
+  font-family: "frozencrystal";
+  src: url(frozencrystal.ttf) format("truetype");
+}
+@font-face {
+  font-family: "montserrat";
+  src: url(Montserrat-Medium.ttf) format("truetype");
+}
+@font-face {
+  font-family: "bitter";
+  src: url(Bitter-VariableFont_wght.ttf) format("truetype");
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+}
+
+body {
+  background-color: peachpuff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  width: 900px;
+  height: 500px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 5px 3px 5px rgba(0, 0, 0, 0.2);
+  background-color: white;
+}
+.container > div {
+  flex-grow: 1;
+  min-width: 380px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container .sub-container-left {
+  text-align: center;
+  color: tomato;
+  font-weight: medium;
+  line-height: 1.5rem;
+}
+.container .sub-container-left div:nth-child(3) {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.container .sub-container-left span {
+  background-color: tomato;
+  color: white;
+}
+.container .sub-container-left h1 {
+  font-family: montserrat;
+}
+.container .sub-container-left p {
+  font-family: bitter;
+}
+
+.calculator {
+  width: 350px;
+  height: 350px;
+  padding: 1em;
+  background: dimgrey;
+  box-shadow: 0 5px 3px 5px rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 30% repeat(5, 1fr);
+  column-gap: 1px;
+  row-gap: 1px;
+  grid-template-areas: "display display display display" "button17 button18 button19 button20" "button1 button2 button3 button4" "button5 button6 button7 button8" "button9 button10 button11 button12" "button13 button14 button15 button16";
+}
+.calculator .display {
+  grid-area: display;
+  border: inset 1px dimgray;
+  background-color: dimgrey;
+  width: 100%;
+  font-family: "frozencrystal";
+  font-size: 4.5rem;
+  text-align: right;
+  color: lavender;
+}
+.calculator .button {
+  border: none;
+  background-color: cadetblue;
+  color: white;
+}
+.calculator .button:hover {
+  box-shadow: 0 0 5px 25px rgba(255, 255, 255, 0.2) inset;
+}
+.calculator .button:active {
+  box-shadow: 0 0 5px 25px rgba(0, 0, 0, 0.2) inset;
+}
+.calculator .button:nth-child(2) {
+  grid-area: button1;
+}
+.calculator .button:nth-child(3) {
+  grid-area: button2;
+}
+.calculator .button:nth-child(4) {
+  grid-area: button3;
+}
+.calculator .button:nth-child(5) {
+  grid-area: button4;
+  background-color: steelblue;
+}
+.calculator .button:nth-child(6) {
+  grid-area: button5;
+}
+.calculator .button:nth-child(7) {
+  grid-area: button6;
+}
+.calculator .button:nth-child(8) {
+  grid-area: button7;
+}
+.calculator .button:nth-child(9) {
+  grid-area: button8;
+  background-color: steelblue;
+}
+.calculator .button:nth-child(10) {
+  grid-area: button9;
+}
+.calculator .button:nth-child(11) {
+  grid-area: button10;
+}
+.calculator .button:nth-child(12) {
+  grid-area: button11;
+}
+.calculator .button:nth-child(13) {
+  grid-area: button12;
+  background-color: steelblue;
+}
+.calculator .button:nth-child(14) {
+  grid-area: button13;
+}
+.calculator .button:nth-child(15) {
+  grid-area: button14;
+}
+.calculator .button:nth-child(16) {
+  grid-area: button15;
+  background-color: mediumseagreen;
+}
+.calculator .button:nth-child(17) {
+  grid-area: button16;
+  background-color: steelblue;
+}
+.calculator .button:nth-child(18) {
+  grid-area: button17;
+  background-color: palevioletred;
+}
+.calculator .button:nth-child(19) {
+  grid-area: button18;
+  background-color: palevioletred;
+}
+.calculator .button:nth-child(20) {
+  grid-area: button19;
+  background-color: palevioletred;
+}
+.calculator .button:nth-child(21) {
+  grid-area: button20;
+  background-color: tomato;
+}
+
+/*# sourceMappingURL=style.css.map */
