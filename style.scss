@@ -38,29 +38,26 @@ body {
 
 .container {
     display: flex;
-    width: 900px;
-    height: 500px;
-    flex-direction: row;
-    flex-wrap: wrap;
+    width: 70%;
+    flex-flow: row wrap;
     justify-content: space-around;
     align-items: center;
     box-shadow: 0 5px 3px 5px $shadow;
     background-color: white;
 
     > div {
-	flex-grow: 1;
-	min-width: 380px;
-	height: 100%;
+	width: 380px;
+	height: 400px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
     }
+    
     .sub-container-left {
 	text-align: center;
 	color: $color-f4;
-	font-weight: medium;
-	line-height: 1.5rem;
+	line-height: 2rem;
 
 	div:nth-child(3) {
 	    margin: {
@@ -72,6 +69,7 @@ body {
 	span {
 	    background-color: $color-f4;
 	    color: white;
+	    font-weight: bold;
 	}
 	h1 {
 	    font-family: montserrat;
@@ -89,8 +87,7 @@ body {
     height: 350px;
     padding: 1em;
     background: dimgrey;
-    //border-radius: 5px;
-    box-shadow: 0 5px 3px 5px $shadow;
+//    box-shadow: 0 5px 3px 5px $shadow;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 30% repeat(5, 1fr);

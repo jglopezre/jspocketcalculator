@@ -28,19 +28,16 @@ body {
 
 .container {
   display: flex;
-  width: 900px;
-  height: 500px;
-  flex-direction: row;
-  flex-wrap: wrap;
+  width: 70%;
+  flex-flow: row wrap;
   justify-content: space-around;
   align-items: center;
   box-shadow: 0 5px 3px 5px rgba(0, 0, 0, 0.2);
   background-color: white;
 }
 .container > div {
-  flex-grow: 1;
-  min-width: 380px;
-  height: 100%;
+  width: 380px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,8 +46,7 @@ body {
 .container .sub-container-left {
   text-align: center;
   color: tomato;
-  font-weight: medium;
-  line-height: 1.5rem;
+  line-height: 2rem;
 }
 .container .sub-container-left div:nth-child(3) {
   margin-top: 2rem;
@@ -59,6 +55,7 @@ body {
 .container .sub-container-left span {
   background-color: tomato;
   color: white;
+  font-weight: bold;
 }
 .container .sub-container-left h1 {
   font-family: montserrat;
@@ -72,7 +69,6 @@ body {
   height: 350px;
   padding: 1em;
   background: dimgrey;
-  box-shadow: 0 5px 3px 5px rgba(0, 0, 0, 0.2);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 30% repeat(5, 1fr);

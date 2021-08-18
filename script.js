@@ -243,8 +243,6 @@ function keyFunction(keyValue, bufferObj) {
 
     display.innerText = bufferObj.data;
 
-    console.log(bufferObj);
-
     return bufferObj;
 }
 
