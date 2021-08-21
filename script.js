@@ -44,7 +44,6 @@ function exponentialization(bufferObj) {
 function clearData(bufferObj) {
 
     if (!bufferObj.allClear) {
-	console.log("aqui");
 	bufferObj.data = "";
 	bufferObj.allClear = true;
     }else{
@@ -84,6 +83,7 @@ function operation(bufferObj) {
 	default:
 	    console.error("INVALID OPERATION")
 	}
+	
     }else{
 	bufferObj.buffer = Number(bufferObj.data);
 	bufferObj.operating = true;
@@ -113,9 +113,14 @@ function operation(bufferObj) {
 function keyFunction(keyValue, bufferObj) {
     let bufferA = "";
 
-    if (bufferObj.equal) {
-	bufferObj.data = "";
-	bufferObj.equal = false;
+    //This prevents bufferobj.data clearing if a Memory Key pressed
+    if (keyValue == 17 || keyValue == 18 || keyValue == 19) {
+	console.log("SOME MEMORY KEY HAS BEEN PRESSED");
+    }else{
+	if (bufferObj.equal) {
+	    bufferObj.data = "";
+	    bufferObj.equal = false;
+	}
     }
     
     switch (keyValue) {

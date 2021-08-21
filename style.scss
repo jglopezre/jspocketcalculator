@@ -20,6 +20,15 @@ $shadow: rgb(0, 0, 0, 0.2);
     src: url(Bitter-VariableFont_wght.ttf) format("truetype");
 }
 
+@media only screen and (max-width: 500px) {
+    .container {
+	height: 750px;
+    }
+    .calculator {
+	transform: scale(0.7, 0.7);
+    }
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -38,7 +47,9 @@ body {
 
 .container {
     display: flex;
+    min-width: 300px;
     width: 70%;
+ //   height: 450px;
     flex-flow: row wrap;
     justify-content: space-around;
     align-items: center;
@@ -83,11 +94,12 @@ body {
 
 
 .calculator {
+    min-width: 280px;
     width: 350px;
     height: 350px;
     padding: 1em;
     background: dimgrey;
-//    box-shadow: 0 5px 3px 5px $shadow;
+    box-shadow: 0 5px 3px 5px $shadow;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 30% repeat(5, 1fr);
@@ -220,4 +232,6 @@ body {
 	grid-area: button20;
 	background-color: $color-f4;
     }
+
+    
 }
